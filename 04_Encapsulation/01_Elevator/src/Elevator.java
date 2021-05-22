@@ -17,8 +17,11 @@ public class Elevator {
         currentFloor = currentFloor + 1;
     }
     public void move(int floor){
-        if (floor < minFloor || floor > maxFloor || floor == currentFloor ){
+        if (floor < minFloor || floor > maxFloor){
             System.out.println("Неверный номер этажа");
+            return;
+        }
+        if (floor == currentFloor){
             return;
         }
         for (int i = floor; i > currentFloor; moveUp()){
