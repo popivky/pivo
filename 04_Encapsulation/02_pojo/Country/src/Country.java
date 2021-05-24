@@ -5,6 +5,10 @@ public class Country {
     private  String capital;
     private boolean accessToSea;
 
+    private Country (String countryName){
+        this.countryName = countryName;
+    }
+
     public String getCountryName() {
         return countryName;
     }
@@ -37,7 +41,7 @@ public class Country {
         this.capital = capital;
     }
 
-    public boolean isAccessToSea() {
+    public boolean getAccessToSea() {
         return accessToSea;
     }
 
@@ -45,9 +49,7 @@ public class Country {
         this.accessToSea = accessToSea;
     }
 
-    private Country (String countryName){
-        this.countryName = countryName;
-    }
+
 
 
 
