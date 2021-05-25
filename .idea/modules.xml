@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/04_Encapsulation/01_Elevator/01_Elevator.iml" filepath="$PROJECT_DIR$/04_Encapsulation/01_Elevator/01_Elevator.iml" />
+      <module fileurl="file://$PROJECT_DIR$/04_Encapsulation/02_pojo/02_pojo.iml" filepath="$PROJECT_DIR$/04_Encapsulation/02_pojo/02_pojo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/04_Encapsulation/03_immutable/03_immutable.iml" filepath="$PROJECT_DIR$/04_Encapsulation/03_immutable/03_immutable.iml" />
+      <module fileurl="file://$PROJECT_DIR$/04_Encapsulation/04_Copy/04_Copy.iml" filepath="$PROJECT_DIR$/04_Encapsulation/04_Copy/04_Copy.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/pivo.iml" filepath="$PROJECT_DIR$/.idea/pivo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/printer/printer.iml" filepath="$PROJECT_DIR$/printer/printer.iml" />
+    </modules>
+  </component>
+</project>
