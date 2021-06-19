@@ -1,6 +1,8 @@
 import java.util.Scanner;
 
 public class Main {
+    final static int BOXES_IN_CONTAINER = 27;
+    final static int CONTAINERS_IN_TRUCK = 12;
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
@@ -9,9 +11,8 @@ public class Main {
             int container;
             int i;
             int a = 0;
-            int truck = (box/ 324) + 1;
-            truck = truck == 0 ? (truck + 1) : truck;
-            container = (int) Math.ceil(((double) box / 27));
+            int truck = (box/(CONTAINERS_IN_TRUCK * BOXES_IN_CONTAINER)) + 1;
+            container = (int) Math.ceil(((double) box / BOXES_IN_CONTAINER));
             if ( box == 0){
                 System.out.println("Необходимо:" + System.lineSeparator() +
                         "грузовиков - "  + "0 шт." +   System.lineSeparator() +
@@ -20,12 +21,12 @@ public class Main {
             }
             for ( i = 1; i <= box; i++, a++){
 
-                if (a == Math.round(a / (27 * 12) * 27 * 12)){
-                    System.out.println("Грузовик: " + (Math.round(i / (27 * 12)) + 1));
+                if (a == Math.round(a / (BOXES_IN_CONTAINER * CONTAINERS_IN_TRUCK) * BOXES_IN_CONTAINER * CONTAINERS_IN_TRUCK)){
+                    System.out.println("Грузовик: " + (Math.round(i / (BOXES_IN_CONTAINER * CONTAINERS_IN_TRUCK)) + 1));
                 }
 
-                if (a == Math.round(a / 27) * 27 ){
-                    System.out.print("\tКонтейнер: " + (Math.round(i / 27) + 1) + System.lineSeparator());
+                if (a == Math.round(a / BOXES_IN_CONTAINER) * BOXES_IN_CONTAINER ){
+                    System.out.print("\tКонтейнер: " + (Math.round(i / BOXES_IN_CONTAINER) + 1) + System.lineSeparator());
                 }
 
                 System.out.println("\t\tЯщик: " + i);
