@@ -18,7 +18,7 @@ public class Main {
       String patronymic = !input.contains(" ") ? input : input.substring(input.lastIndexOf(" ") + 1);
       String tire = "-";
 
-      surname = surname.substring(0,1).toUpperCase() + surname.substring(1).toLowerCase();
+      surname = !surname.contains("-") ? (surname.substring(0,1).toUpperCase() + surname.substring(1).toLowerCase()) : surname.substring(0,1).toUpperCase() + surname.substring(1, surname.indexOf("-")).toLowerCase() + "-" + surname.substring(surname.indexOf("-") + 1,surname.indexOf("-") + 2).toUpperCase() + surname.substring(surname.indexOf("-") + 2).toLowerCase();
       name = name.substring(0,1).toUpperCase() + name.substring(1).toLowerCase();
       patronymic = patronymic.substring(0,1).toUpperCase() + patronymic.substring(1).toLowerCase();
 
