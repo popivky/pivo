@@ -73,11 +73,11 @@ String text =
     String [] words = text.split("\\s+");
     for( int i = 0; i < words.length; i++){
 
-     // words[i] =  words[i].contains("-") ? (words[i].charAt(0) == "-" words[i] : words[i].replaceAll("[^a-zA-Z]", "");
+      words[i] =  words[i].contains("-") ? (words[i].indexOf("-") == words[i].lastIndexOf("-") ? words[i] : words[i].replaceAll("[^a-zA-Z]", "")) : words[i].replaceAll("[^a-zA-Z]", "");
       // на будущее ;)
 
 
-      System.out.println(words[i].replaceAll("[^a-zA-Z]", ""));
+      System.out.println(words[i]);
     }
 
 
