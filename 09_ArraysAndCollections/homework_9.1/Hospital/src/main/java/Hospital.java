@@ -21,7 +21,7 @@ public class Hospital {
 
         }
 
-        return new float[patientsCount];
+        return temperatureData;
     }
 
     public static String getReport(float[] temperatureData) {
