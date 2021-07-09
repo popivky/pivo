@@ -9,6 +9,31 @@ public class TwoDimensionalArray {
         // [ , X,  ]
         // [X,  , X]
 
-        return new char[0][0];
+
+        char [] [] picture = new char[size][size];
+
+        for ( int i = 0; i < picture.length; i++){
+
+            for (int j = 0; j < picture.length; j++) {
+
+                if (size == 1) {
+                    picture[i][j] = symbol;
+                    return picture;
+                }
+
+                picture[i][j] = ' ';
+                if ((i + j) % (picture[i].length - 1) == 0) {
+                    picture[i][j] = symbol;
+                }
+                if ((i - j) % (picture[i].length - 1) == 0) {
+                    picture[i][j] = symbol;
+                }
+
+                System.out.print(picture[i][j]);
+            }
+            System.out.println();
+        }
+
+        return picture;
     }
 }
