@@ -24,8 +24,7 @@ public class TwoDimensionalArray {
                 picture[i][j] = ' ';
                 if ((i + j) % (picture[i].length - 1) == 0) {
                     picture[i][j] = symbol;
-                }
-                if ((i - j) % (picture[i].length - 1) == 0) {
+                } else if((i - j) % (picture[i].length - 1) == 0) {
                     picture[i][j] = symbol;
                 }
 
