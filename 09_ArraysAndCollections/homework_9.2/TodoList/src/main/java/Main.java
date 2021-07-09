@@ -13,6 +13,12 @@ public class Main {
             Scanner scanner = new Scanner(System.in);
 
             String command = scanner.nextLine();
+            String[] arr = command.split(",?\\s+");
+            String text = "";
+
+            if (arr.length < 2 && !arr[0].equals("LIST")){
+                continue;
+            }
 
             if (command.contains("ADD")) {
                 todoList.add(command.substring(command.indexOf(" ")));
@@ -25,16 +31,28 @@ public class Main {
                     }
                 }
 
-            if(command.contains("EDIT")){
-                System.out.print("Дело " +  todoList.deals.get(Integer.parseInt((command.substring(command.indexOf(" ") + 1, command.indexOf(" ") + 2)))) + " заменено");
-                todoList.edit((command.substring(command.indexOf(" ") + 2)), Integer.parseInt((command.substring(command.indexOf(" ") + 1, command.indexOf(" ") + 2))));
-                System.out.println(" на " + command.substring(command.indexOf(" ") + 2));
+            if(command.contains("EDIT")) {
+
+                System.out.print("Дело " + todoList.deals.get(Integer.parseInt(arr[1])) + " заменено");
+
+                for (int i = 2; i < arr.length; i++) {
+
+                    text = text + " " + arr[i];
+                }
+
+                todoList.edit(text, Integer.parseInt(arr[1]));
+
+                System.out.println(" на " + text);
             }
 
             if (command.contains("DELETE")){
+                if( Integer.parseInt(arr[1]) > todoList.deals.size() - 1){
+                    System.out.println("Дело с таким номером не существует");
+                    continue;
+                }
 
-                System.out.println("Дело" +todoList.deals.get(Integer.parseInt((command.substring(command.indexOf(" ") + 1, command.indexOf(" ") + 2)))) + " удалено");
-                todoList.delete( Integer.parseInt((command.substring(command.indexOf(" ") + 1, command.indexOf(" ") + 2))));
+                System.out.println("Дело" + todoList.deals.get(Integer.parseInt(arr[1])) + " удалено");
+                todoList.delete((Integer.parseInt(arr[1])));
             }
             }
 

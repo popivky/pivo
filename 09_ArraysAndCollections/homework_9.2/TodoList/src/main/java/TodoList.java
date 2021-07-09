@@ -24,8 +24,7 @@ public class TodoList {
         //  проверьте возможность изменения
 
         if (index < deals.size() && index > -1){
-            deals.remove(index);
-            deals.add(index, todo);
+            deals.set(index, todo);
         }
     }
 
