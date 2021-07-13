@@ -8,7 +8,7 @@ public class EmailList {
     public void add(String email) {
         // TODO: валидный формат email добавляется
 
-        if (email.contains("@") && email.contains(".") && email.indexOf("@") == email.lastIndexOf("@") && email.indexOf(".") == email.lastIndexOf(".")) {
+        if (email.contains("@") && email.contains(".") && email.indexOf("@") == email.lastIndexOf("@") && !email.substring(email.indexOf("@"),email.lastIndexOf(".")).contains(".")) {
 
             mail.add(email.toLowerCase(Locale.ROOT));
 

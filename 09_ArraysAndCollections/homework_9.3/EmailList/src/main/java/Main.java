@@ -49,7 +49,7 @@ public class Main {
                 System.out.println(emailList.getSortedEmails());
                 continue;
             }
-            if (!input.contains("@") || !input.contains(".") || input.indexOf("@") != input.lastIndexOf("@") || input.indexOf(".") != input.lastIndexOf(".")) {
+            if (!input.contains("@") || !input.contains(".") || input.indexOf("@") != input.lastIndexOf("@") || input.substring(input.indexOf("@"),input.lastIndexOf(".")).contains(".")) {
 
 
                 System.out.println(WRONG_EMAIL_ANSWER);
