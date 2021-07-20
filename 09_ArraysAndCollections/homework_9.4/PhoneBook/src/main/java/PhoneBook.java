@@ -67,11 +67,15 @@ public class PhoneBook {
 
         if (!book.isEmpty()) {
 
-            contacts.add(book.toString().replaceAll("[{}]", "").replaceAll("[=]", " - "));
+            for (String s : book.keySet()) {
+
+                contacts.add(s + " - " + book.get(s));
+            }
 
         }
 
         return contacts;
+
     }
 
 }
