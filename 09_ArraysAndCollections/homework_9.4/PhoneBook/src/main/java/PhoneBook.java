@@ -9,7 +9,7 @@ public class PhoneBook {
     public void addContact(String phone, String name) {
         // проверьте корректность формата имени и телефона
         // если такой номер уже есть в списке, то перезаписать имя абонента
-        if ((name.equals(name.replaceAll("[^аА-яЯ]", "")) && phone.equals(phone.replaceAll("[^0-9]", ""))) && (!name.isEmpty() && !phone.isEmpty())) {
+        if ((name.equals(name.replaceAll("[^аА-яЯ]", "")) && phone.equals(phone.replaceAll("[^0-9]", ""))) && (!name.isEmpty() && !phone.isEmpty()) || phone.contains("; ")) {
 
             if (book.containsValue(phone)) {
 
@@ -23,8 +23,11 @@ public class PhoneBook {
             }
 
             book.put(name, phone);
+            System.out.println("Контакт сохранён!");
 
-        }
+
+        } else System.out.println("Неверный формат ввода");
+
     }
 
 
@@ -32,7 +35,7 @@ public class PhoneBook {
         // формат одного контакта "Имя - Телефон"
         // если контакт не найдены - вернуть пустую строку
         String info = "" + book;
-        String[] arr = info.split(",?\\s+");
+        String[] arr = info.split(",\\s+");
         String name = "";
         String number = "";
 
@@ -52,12 +55,16 @@ public class PhoneBook {
         // если контакт не найден - вернуть пустой TreeSet
 
         if (book.containsKey(name)) {
+            digits.clear();
 
             name = name + " - " + book.get(name);
 
             digits.add(name);
-        }
 
+
+            //           System.out.println(digits.toString().replace("[", "").replace("]", ""));
+
+        }
         return digits;
     }
 

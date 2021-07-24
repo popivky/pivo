@@ -1,4 +1,6 @@
-import java.util.HashMap;
+import java.util.ArrayList;
+import java.util.Locale;
+import java.util.Map;
 import java.util.Scanner;
 
 public class Main {
@@ -13,9 +15,12 @@ public class Main {
 
         while (true) {
             String input = scanner.nextLine();
+
             if (input.equals("0")) {
                 break;
             }
+
+
             if (input.equals("LIST")) {
                 contacts.getAllContacts();
                 System.out.println(contacts.getAllContacts());
@@ -25,15 +30,20 @@ public class Main {
 
             if (Character.isAlphabetic(temp.charAt(0))) {
                 contacts.addContact(input, temp);
-                System.out.println("Контакт сохранён!");
                 temp = " ";
                 continue;
             }
 
             if (Character.isDigit(temp.charAt(0))) {
+                if (contacts.book.containsKey(input)) {
+                    String secondNumber = contacts.book.get(input);
+                    String allNum = secondNumber + "; " + temp;
+                    contacts.addContact(allNum, input);
+                    temp = " ";
+                    continue;
+                }
 
                 contacts.addContact(temp, input);
-                System.out.println("Контакт сохранён!");
                 temp = " ";
                 continue;
             }
@@ -53,10 +63,11 @@ public class Main {
                     }
 
 
-                    if (input.replaceAll("[^aA-zZ]", "").equals(input) && temp.equals(" ")) {
+                    if (input.replaceAll("[^аА-яЯ]", "").equals(input) && temp.equals(" ")) {
                         if (contacts.book.containsKey(input)) {
                             contacts.getPhonesByName(input);
-                            System.out.println(contacts.getPhonesByName(input));
+                            System.out.println(contacts.getPhonesByName(input).toString().replace("[", "").replace("]", ""));
+                            break;
                         } else {
                             System.out.println("Такого имени в телефонной книге нет." + System.lineSeparator() + "Введите номер телефона для абонента " + input + ":");
                             temp = input;
@@ -64,19 +75,38 @@ public class Main {
                         }
                     }
 
-                    if (input.replaceAll("[^0-9]", "").equals(input) && temp.equals(" ")) {
-                        if (contacts.book.containsValue(input)) {
-                            contacts.getNameByPhone(input);
-                            System.out.println(contacts.getNameByPhone(input));
+                    if (input.replaceAll("[^0-9]", "").equals(input) && temp.equals(" ") && !contacts.book.containsValue(input)) {
 
-                        } else {
+                        String bookString = contacts.book.toString();
+
+                        if (bookString.contains(input)) {
+
+                            for (Map.Entry<String, String> entry : contacts.book.entrySet()) {
+
+                                if (entry.getValue().contains(input)) {
+                                    System.out.println((entry.getKey() + " - " + entry.getValue()));
+                                    break;
+                                }
+                            }
+
+                        } else
                             System.out.println("Такого номера нет в телефонной книге." + System.lineSeparator() + "Введите имя абонента для номера " + input + ":");
-                            temp = input;
-                            break;
-                        }
+                        temp = input;
+                        break;
                     }
+                }
+                if (input.replaceAll("[^0-9]", "").equals(input) && temp.equals(" ") && contacts.book.containsValue(input)) {
+                    contacts.getNameByPhone(input);
+                    System.out.println(contacts.getNameByPhone(input));
+                    break;
+
                 }
             }
         }
     }
 }
+
+
+
+
+
