@@ -2,7 +2,7 @@ import java.time.LocalDate;
 
 public class DepositAccount extends BankAccount {
 
-    LocalDate lastIncome;
+   protected LocalDate lastIncome;
 
     public void take(double amountToTake) {
 

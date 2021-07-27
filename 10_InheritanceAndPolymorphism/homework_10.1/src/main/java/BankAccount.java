@@ -1,8 +1,7 @@
-import java.time.LocalDate;
 
 public class BankAccount {
 
-  double money = 0.0;
+  protected double money = 0.0;
 
   public double getAmount() {
 
