@@ -4,6 +4,7 @@ import junit.framework.TestCase;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 public class RouteCalculatorTest extends TestCase {
 
@@ -12,6 +13,8 @@ public class RouteCalculatorTest extends TestCase {
         RouteCalculator routeCalculator = new RouteCalculator(stationIndex);
         ArrayList<Station> connect1 = new ArrayList<>();
         ArrayList<Station> connect2 = new ArrayList<>();
+        ArrayList<Station> connect3 = new ArrayList<>();
+        ArrayList<Station> connect4 = new ArrayList<>();
 
 
 
@@ -43,9 +46,15 @@ public class RouteCalculatorTest extends TestCase {
         connect1.add(stationIndex.getStation("Greeting"));
         connect2.add(stationIndex.getStation("Bloom"));
         connect2.add(stationIndex.getStation("Redemption"));
+        connect3.add(stationIndex.getStation("Greeting"));
+        connect3.add(stationIndex.getStation("Reggie"));
+        connect4.add(stationIndex.getStation("Redemption"));
+        connect4.add(stationIndex.getStation("Bloom"));
 
         stationIndex.addConnection(connect1);
         stationIndex.addConnection(connect2);
+        stationIndex.addConnection(connect3);
+        stationIndex.addConnection(connect4);
 
     }
 
@@ -58,7 +67,7 @@ public class RouteCalculatorTest extends TestCase {
       route.add(stationIndex.getStation("Greeting"));
       route.add(stationIndex.getStation("Greenly"));
       List <Station> expected = route;
-      assertEquals(actual, expected);
+      assertEquals(expected, actual);
     }
 
     public void testGetRouteOnTheLine(){
@@ -69,7 +78,7 @@ public class RouteCalculatorTest extends TestCase {
         route.add(stationIndex.getStation("Redmond"));
         route.add(stationIndex.getStation("Redemption"));
         List <Station> expected = route;
-        assertEquals(actual, expected);
+        assertEquals(expected, actual);
     }
 
     public void testGetRouteWithOneConnection(){
@@ -82,7 +91,7 @@ public class RouteCalculatorTest extends TestCase {
         route.add(stationIndex.getStation("Redmond"));
 
         List <Station> expected = route;
-        assertEquals(actual, expected);
+        assertEquals(expected, actual);
 
     }
 
@@ -99,9 +108,26 @@ public class RouteCalculatorTest extends TestCase {
         route.add(stationIndex.getStation("Blaze"));
 
         List <Station> expected = route;
-        assertEquals(actual, expected);
+        assertEquals(expected, actual);
 
     }
+
+    public void testCalculateDuration (){
+        List  <Station> route = new ArrayList<>();
+        route.add(stationIndex.getStation("Greenly"));
+        route.add(stationIndex.getStation("Greeting"));
+        route.add(stationIndex.getStation("Reggie"));
+        route.add(stationIndex.getStation("Redmond"));
+        route.add(stationIndex.getStation("Redemption"));
+        route.add(stationIndex.getStation("Bloom"));
+        route.add(stationIndex.getStation("Blaze"));
+        double actual = RouteCalculator.calculateDuration(route);
+        double expected = 17;
+        assertEquals(expected, actual);
+
+    }
+
+
 
     protected void tearDown() throws Exception{
 
