@@ -25,12 +25,14 @@ public class Main {
     public static void main(String[] args) {
         loggerSearch = LogManager.getLogger("loggerSearch");
         inputErrors = LogManager.getLogger("inputErrors");
-        exeptions = LogManager.getRootLogger();
+        exeptions = LogManager.getLogger("exeptions");
 
         RouteCalculator calculator = getRouteCalculator();
 
         System.out.println("Программа расчёта маршрутов метрополитена Санкт-Петербурга\n");
         scanner = new Scanner(System.in);
+        String [] arr = {"1", "2", "3"};
+
         for (; ; ) {
             try {
                 Station from = takeStation("Введите станцию отправления:");
@@ -42,9 +44,10 @@ public class Main {
 
                 System.out.println("Длительность: " +
                         RouteCalculator.calculateDuration(route) + " минут");
+                System.out.println(arr[3]);
 
             } catch (Exception exception){
-               exeptions.error("Ошибка: " + exception.getMessage());
+               exeptions.error("Ошибка: " + exception.getMessage() );
             }
         }
     }
