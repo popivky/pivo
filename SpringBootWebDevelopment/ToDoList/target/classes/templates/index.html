@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Список дел</title>
+</head>
+<body>
+<h1>Список дел(<span th:text="${thingCount}">0</span>)</h1>
+<div>
+<div th:each="thing : ${things}">
+    <a href="#" class="thing-link" th:attr="data-id=${thing.id}" th:text="${thing.description}"></a>
+</div>
+</div>
+<p th:text="${someParameter}"></p>
+
+
+
+
+</body>
+</html>
